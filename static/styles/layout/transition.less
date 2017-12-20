@@ -1,0 +1,417 @@
+.transform(@transform) {
+  -webkit-transform: @transform; /* Safari 和 Chrome */
+     -moz-transform: @transform; /* Firefox */
+      -ms-transform: @transform; /* IE 9 */
+       -o-transform: @transform; /* Opera */
+          transform: @transform;
+}
+
+.transition(@transition) {
+  -webkit-transition: @transition;
+     -moz-transition: @transition;
+      -ms-transition: @transition;
+       -o-transition: @transition;
+          transition: @transition;
+}
+
+// Animations
+.animation(@animation) {
+  animation: @animation;
+  -webkit-animation: @animation;
+       -o-animation: @animation;
+}
+.animation-name(@name) {
+  animation-name: @name;
+  -webkit-animation-name: @name;
+}
+.animation-duration(@duration) {
+  animation-duration: @duration;
+  -webkit-animation-duration: @duration;
+}
+.animation-timing-function(@timing-function) {
+  animation-timing-function: @timing-function;
+  -webkit-animation-timing-function: @timing-function;
+}
+.animation-delay(@delay) {
+  animation-delay: @delay;
+  -webkit-animation-delay: @delay;
+}
+.animation-iteration-count(@iteration-count) {
+  animation-iteration-count: @iteration-count;
+  -webkit-animation-iteration-count: @iteration-count;
+}
+.animation-direction(@direction) {
+  animation-direction: @direction;
+  -webkit-animation-direction: @direction;
+}
+.animation-fill-mode(@fill-mode) {
+  animation-fill-mode: @fill-mode;
+  -webkit-animation-fill-mode: @fill-mode;
+}
+
+.will_transform {
+  //will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+
+.fades(@fillmode, @direction, @time: .35s) {
+  .will_transform;
+  .animation(~"fade@{fillmode}@{direction}" @time cubic-bezier(.25,.8,.25,1) .05s forwards);
+}
+
+.hiddens(@fillmode, @time: .35s) {
+  .will_transform;
+  .animation(~"@{fillmode}" @time cubic-bezier(.25,.8,.25,1) .05s forwards);
+}
+
+/*-- fade out bottom--*/
+.keyframes(@name, @rules) {
+
+  @keyframes @name {
+    @rules();
+  }
+
+  @-webkit-keyframes @name {
+    @rules();
+  }
+
+  @-moz-keyframes @name {
+    @rules();
+  }
+
+  @-ms-keyframes @name {
+    @rules();
+  }
+
+  @-o-keyframes @name {
+    @rules();
+  }
+}
+
+// 从底部淡出
+.keyframes(fadeoutbottom, {
+    0% {
+      .transform(translate3d(0, 0, 0));
+    }
+    100% {
+      .transform(translate3d(0, 100%, 0));
+    }
+});
+
+// 从底部淡入
+.keyframes(fadeinbottom, {
+    from {
+      opacity: 0;
+      .transform(translate3d(0, 100%, 0));
+    }
+    to {
+      opacity: 1;
+      .transform(translate3d(0, 0, 0));
+    }
+});
+
+// 从顶部淡出
+.keyframes(fadeouttop, {
+    0% {
+      .transform(translate3d(0, 0, 0));
+    }
+    100% {
+      .transform(translate3d(0, -100%, 0));
+    }
+});
+
+// 从顶部淡入
+.keyframes(fadeintop, {
+    0% {
+      .transform(translate3d(0, -100%, 0));
+    }
+    100% {
+      .transform(translate3d(0, 0, 0));
+    }
+});
+
+// 从左边淡出
+.keyframes(fadeoutleft, {
+    0% {
+      .transform(translate3d(0, 0, 0));
+    }
+    100% {
+      .transform(translate3d(-100%, 0, 0));
+    }
+});
+
+// 从左边淡入
+.keyframes(fadeinleft, {
+    0% {
+      .transform(translate3d(-100%, 0, 0));
+    }
+    100% {
+      .transform(translate3d(0, 0, 0));
+    }
+});
+
+// 从右边淡出
+.keyframes(fadeoutright, {
+    0% {
+      .transform(translate3d(0, 0, 0));
+      opacity: 1;
+    }
+    100% {
+      .transform(translate3d(100%, 0, 0));
+      opacity: 0;
+    }
+});
+
+// 从右边淡入
+.keyframes(fadeinright, {
+    0% {
+      .transform(translate3d(100%, 0, 0));
+      opacity: 0;
+    }
+    100% {
+      .transform(translate3d(0, 0, 0));
+      opacity: 1;
+    }
+});
+
+// 从中间淡出
+.keyframes(fadeoutcenter, {
+    0% {
+      .transform(scale3d(1, 1, 1));
+    }
+    100% {
+      .transform(scale3d(0, 0, 0));
+    }
+});
+
+// 从中间淡入
+.keyframes(fadeincenter, {
+    0% {
+      .transform(scale3d(0, 0, 0));
+    }
+    100% {
+      .transform(scale3d(1, 1, 1));
+    }
+});
+
+// 淡出
+.keyframes(fadeout, {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+});
+
+// 淡入
+.keyframes(fadein, {
+    0% {
+      opacity: 0;
+      visibility: visible;
+    }
+    100% {
+      opacity: 1;
+      visibility: visible;
+    }
+});
+
+// 隐藏
+.keyframes(hidden, {
+    100% {
+      display: none;
+    }
+});
+
+// 显示
+.keyframes(show, {
+    100% {
+      visibility: visible;
+    }
+});
+
+// 太阳光动画
+.fadesunlight(@fillmode, @direction, @time: .35s) {
+  .animation(~"fade@{fillmode}@{direction}" @time cubic-bezier(.25,.8,.25,1) infinite);
+}
+.keyframes(fadesunlight1center, {
+  0% { opacity: 0;}
+  50% { opacity: .15;}
+  100% { opacity: 0;}
+});
+.keyframes(fadesunlight2center, {
+  0% { opacity: 0;}
+  50% { opacity: .1;}
+  100% { opacity: 0;}
+});
+.keyframes(fadesunlight3center, {
+  0% { opacity: 0;}
+  50% { opacity: .08;}
+  100% { opacity: 0;}
+});
+// 风车塔动画
+.an-rotate(@fillmode, @time: 5s) {
+  .animation(@fillmode @time linear infinite);
+}
+.keyframes (rotate {
+  0%   { .rotate(0deg); }
+  100% { .rotate(360deg); }
+});
+// 白云动画
+.an-cloud(@fillmode, @direction, @time: 80s) {
+  .animation(~"@{fillmode}@{direction}" @time linear infinite);
+}
+.keyframes (cloudx1 {
+  0% { left:-30%; }
+  50% { left:120%; }
+  100% { left:-30%; }
+});
+.keyframes (cloudx2 {
+  0% { right:-30%; }
+  50% { right:130%; }
+  100% { right:-30%; }
+});
+.keyframes (cloudx3 {
+  0% { left:-50%; }
+  50% { left:150%; }
+  100% { left:-50%; }
+});
+// 蜜蜂鲜花动画
+.an-flower(@fillmode, @time: 3s) {
+  .animation(@fillmode @time ease-in infinite);
+}
+.an-bee(@fillmode, @direction, @time: 3s) {
+  .animation(~"@{fillmode}@{direction}" @time ease-in infinite);
+}
+.keyframes (flower {
+  0% { transform: rotate(-5deg) translate3d(0, 0, 0);}
+  50% { transform: rotate(5deg) translate3d(30%, 0, 0);}
+  100% { transform: rotate(-5deg) translate3d(0, 0, 0);}
+});
+.keyframes (bee1 {
+  0% { transform: rotateY(0deg) translate3d(0, 0, 0);}
+  25% { transform: rotateY(0deg) translate3d(50%, 100%, 0);}
+  49.9% { transform: rotateY(0deg) translate3d(100%, 0, 0);}
+  50% { transform: rotateY(180deg) translate3d(-100%, 0, 0);}
+  75% { transform: rotateY(180deg) translate3d(-50%, -100%, 0);}
+  99.9% { transform: rotateY(180deg) translate3d(0, 0, 0);}
+  100% { transform: rotateY(0deg) translate3d(0, 0, 0);}
+});
+.keyframes (bee2 {
+  0% { transform: rotateY(180deg) translate3d(0, 0, 0);}
+  25% { transform: rotateY(180deg) translate3d(50%, 80%, 0);}
+  49.9% { transform: rotateY(180deg) translate3d(80%, 0, 0);}
+  50% { transform: rotateY(0deg) translate3d(-80%, 0, 0);}
+  75% { transform: rotateY(0deg) translate3d(-50%, -80%, 0);}
+  99.9% { transform: rotateY(0deg) translate3d(0, 0, 0);}
+  100% { transform: rotateY(180deg) translate3d(0, 0, 0);}
+});
+// 小鸡动画
+// 喂食中
+.an-chick(@fillmode, @time: 1.5s, @cubic: ease-in) {
+  .animation(@fillmode @time @cubic infinite);
+}
+.keyframes (chickbody{
+  0% { height: 8.6rem; border-radius: 66% 66% 66% 66% / 80% 80% 50% 50%;}
+  25% { height: 8.7rem; border-radius: 66% 66% 66% 66% / 75% 75% 50% 50%;}
+  50% { height: 8.6rem; border-radius: 66% 66% 66% 66% / 80% 80% 50% 50%;}
+  75% { height: 8.7rem; border-radius: 66% 66% 66% 66% / 75% 75% 50% 50%;}
+  100% { height: 8.6rem; border-radius: 66% 66% 66% 66% / 80% 80% 50% 50%;}
+});
+.keyframes (chickbody-before{
+  0% { height: 8.2rem; border-radius: 66% 66% 66% 66% / 80% 80% 50% 50%;}
+  25% { height: 8.3rem; border-radius: 66% 66% 66% 66% / 75% 75% 50% 50%;}
+  50% { height: 8.2rem; border-radius: 66% 66% 66% 66% / 80% 80% 50% 50%;}
+  75% { height: 8.3rem; border-radius: 66% 66% 66% 66% / 75% 75% 50% 50%;}
+  100% { height: 8.2rem; border-radius: 66% 66% 66% 66% / 80% 80% 50% 50%;}
+});
+.keyframes (eye {
+  0% { transform: translate3d(0, 0, 0);}
+  40% { transform: translate3d(0, 0, 0);}
+  50% { transform: translate3d(0, 60%, 0);}
+  60% { transform: translate3d(0, 0, 0);}
+  100% { transform: translate3d(0, 0, 0);}
+});
+.keyframes (blusher {
+  0% { transform: scale(1);}
+  25% { transform: scale(.9);}
+  50% { transform: scale(1);}
+  75% { transform: scale(.9);}
+  100% { transform: scale(1);}
+});
+.keyframes (face{
+  0% { transform: scale(1,1) translate3d(5%, 10%, 0);}
+  25% { transform: scale(1.1,1.1) translate3d(10%, 12%, 0);}
+  50% { transform: scale(1,1) translate3d(5%, 10%, 0);}
+  75% { transform: scale(1.1,1.1) translate3d(10%, 12%, 0);}
+  100% { transform: scale(1,1) translate3d(5%, 10%, 0);}
+});
+.keyframes (wingright{
+  0% { transform: rotate(0deg) translate3d(0, 0, 0);}
+  25% { transform: rotate(-2deg) translate3d(1.5%, 1%, 0);}
+  50% { transform: rotate(0deg) translate3d(0, 0, 0);}
+  75% { transform: rotate(-2deg) translate3d(1.5%, 1%, 0);}
+  100% { transform: rotate(0deg) translate3d(0, 0, 0);}
+});
+.keyframes (arm{
+  0% { transform: translate3d(5%, 10%, 0);}
+  25% { transform: translate3d(10%, 12%, 0);}
+  50% { transform: translate3d(5%, 10%, 0);}
+  75% { transform: translate3d(10%, 12%, 0);}
+  100% { transform: translate3d(5%, 10%, 0);}
+});
+.keyframes (food-p{
+  0% { opacity: 1;}
+  25% {opacity: 0;}
+  50% { opacity: 1;}
+  75% {opacity: 0;}
+  100% { opacity: 1;}
+});
+.keyframes (dot-1{
+  0% { transform: translate3d(50%, -70%, 0);}
+  25% { transform: translate3d(50%, -170%, 0);}
+  50% { transform: translate3d(100%, -270%, 0);}
+  75% { transform: translate3d(100%, -370%, 0);}
+  100% { transform: translate3d(100%, -470%, 0);}
+});
+.keyframes (mouthspan {
+  0% { 
+    left: 0;
+    border-left: .4rem solid transparent;
+    border-right: .4rem solid transparent;
+  }
+  50% { 
+    left: .1rem;
+    border-left: .3rem solid transparent;
+    border-right: .3rem solid transparent;
+  }
+  100% { 
+    left: 0;
+    border-left: .4rem solid transparent;
+    border-right: .4rem solid transparent;
+  }
+});
+.keyframes (mouthp {
+  0% { 
+    left: 0;
+    width: .7rem;
+    height: 0.1rem;
+  }
+  50% { 
+    left: .1rem;
+    width: .55rem;
+    height: 0.14rem;
+    margin-top: -.07rem;
+  }
+  100% { 
+    left: 0;
+    width: .7rem;
+    height: 0.1rem;
+  }
+});
+.keyframes (greenpulse {
+  from { -webkit-box-shadow: 0 0 18px #f1ff93; }
+  50% { -webkit-box-shadow: 0 0 36px rgba(205,229,41,.5); }
+  to { -webkit-box-shadow: 0 0 18px #f1ff93; }
+});

@@ -1,0 +1,104 @@
+html{
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+html, body {
+  height: 100%;
+  color: @body_color;
+  line-height: 1;
+  -webkit-user-select: none;  //禁止用户复制页面文本
+  -webkit-touch-callout: none;
+  -webkit-overflow-scrolling: touch;  //ios滚动效果
+  -webkit-font-smoothing: antialiased;  //mac下字体
+  -webkit-tap-highlight-color: rgba(242, 137, 76, .05); //a标签点击高亮效果
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, span, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  -webkit-text-size-adjust: none;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+body{
+  font-family: @font-family;
+  letter-spacing: 0;
+  background: @body_bg;
+}
+
+ins, a {
+  text-decoration: none;
+  transition: color .1s ease;
+  -webkit-transition: color .1s ease;
+  color: @a_link;
+}
+
+a:hover {
+  color: @a_link;
+}
+
+/*--滚动条样式--*/
+
+
+// 去掉IE10 input叉叉
+input::-ms-clear {
+  display: none;
+}
+
+// 去掉input默认边框
+input[type=button], input[type=text], input[type=password],[type=tel],[type=number], [type=url], [type=email], button , textarea {
+  border: none;
+  -webkit-appearance: none;
+  outline: none;
+}
+
+input::-webkit-input-placeholder {
+  font-weight: normal;
+}
+
+// 去掉input=number箭头
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+// 背景线性渐变
+.bg-linear(@deg:180deg,@c1:@bg_blue,@c2:@bg_white){
+  background-image:-webkit-linear-gradient(@deg,@c1,@c2);
+  background-image:linear-gradient(@deg,@c1,@c2);
+}
+.bg-linear2(@deg:180deg,@c1:@bg_blue,@c2:@bg_white,@c3:@bg_white){
+  background-image:-webkit-linear-gradient(@deg,@c1,@c2,@c3);
+  background-image:linear-gradient(@deg,@c1,@c2,@c3);
+}
+// 三角形
+.triangle(@bottom:5rem,@left:4rem,@right: 4rem,@c:@bg_in){
+  border-bottom: @bottom solid @c;
+  border-left: @left solid transparent;
+  border-right: @right solid transparent;
+}
+// 容器
+.container {
+  height: 100%;
+  overflow: hidden;
+}
+.content {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  .bg-linear();
+  overflow: hidden;
+}
+// 定位
+.pr{ position: relative;}
+.pa{ position: absolute;}
