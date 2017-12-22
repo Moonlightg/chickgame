@@ -1,0 +1,32 @@
+.sub_title {
+    .display;
+    .justify_content_space_between;
+    .flex(0);
+    height: @sub_title_height;
+    line-height: @sub_title_height;
+    position: relative;
+    font-size: .7rem;
+    h4 {
+        padding: 0 @margin;
+        font-weight: 400;
+        .display;
+        .align_items_center;
+    }
+    i {
+        padding: 0 @margin;
+        color: #999;
+        font-size: 1rem;
+        line-height: @sub_title_height + .2rem;
+    }
+    // 高度
+    &.h {
+        height: @sub_title_height + .2rem;
+        line-height: @sub_title_height + .2rem;
+    }
+    // 下划线
+    &.line {
+        &::after {
+            .hairline_scale(@border, bottom);
+        }
+    }
+}

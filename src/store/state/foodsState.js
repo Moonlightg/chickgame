@@ -1,0 +1,63 @@
+let foods = [{
+  id: 1,
+  name: '啤酒',
+  nutrition: 300,
+  count: 10,
+  image: 'beer.png'
+}, {
+  id: 2,
+  name: '汉堡包',
+  nutrition: 400,
+  count: 0,
+  image: 'burger.png'
+}, {
+  id: 3,
+  name: '胡萝卜',
+  nutrition: 500,
+  count: 5,
+  image: 'carrot.png'
+}, {
+  id: 4,
+  name: '奶酪',
+  nutrition: 600,
+  count: 5,
+  image: 'cheese.png'
+}, {
+  id: 5,
+  name: '玉米',
+  nutrition: 700,
+  count: 5,
+  image: 'corn.png'
+}, {
+  id: 6,
+  name: '青瓜',
+  nutrition: 800,
+  count: 5,
+  image: 'cucumber.png'
+}, {
+  id: 7,
+  name: '奇异果',
+  nutrition: 900,
+  count: 5,
+  image: 'kiwi.png'
+}, {
+  id: 8,
+  name: '哈密瓜',
+  nutrition: 1000,
+  count: 7,
+  image: 'lemon.png'
+}, {
+  id: 9,
+  name: '辣椒',
+  nutrition: 1500,
+  count: 25,
+  image: 'peppers.png'
+}, {
+  id: 10,
+  name: '鸡尾酒',
+  nutrition: 2000,
+  count: 2,
+  image: 'wine.png'
+}]
+
+export default foods

@@ -1,0 +1,40 @@
+// 菜单按钮
+.ic-wrapper{
+  position: fixed;
+  width: 3rem;
+  height: 3rem;
+  &.x1{
+    top: @margin;
+    right: @margin;
+  }
+  .ic-btn{
+  	width: 2.5rem;
+  	height: 2.5rem;
+  	line-height: 2.5rem;
+  	border-radius: 50%;
+  	margin: .25rem auto 0;
+  	font-size: 1.4rem;
+  	text-align: center;
+  	background-color: #fff;
+  	border: 2px solid #713a32;
+  	overflow: hidden;
+  	&.burger{
+      .bg-image('burger');
+      background-position: .125rem .125rem;
+      background-repeat: no-repeat;
+    }
+  }
+  p{
+    position: absolute;
+    bottom: 0;
+    width: 70%;
+    font-size: .6rem;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    background: #713a32;
+    border-radius: .5rem;
+    margin-left: 15%;
+    padding: .1rem 0;
+  }
+}
