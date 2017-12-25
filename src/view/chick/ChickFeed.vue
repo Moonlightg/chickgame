@@ -1,6 +1,12 @@
 <template>
 <!-- chick -->
 <div class="chick">
+  <!-- 营养值进度条 -->
+  <div class="nutrition-wrapper">
+  	<span></span>
+  	<count-down endTime="1514280600" :callback="callback" endText="已经结束了"></count-down>
+  	<p>成长值 100/2000</p>
+  </div>
   <div class="chick-head"></div>
   <div class="chick-body"></div>
   <div class="eye">
@@ -53,6 +59,11 @@
   export default {
     data () {
       return {
+      }
+    },
+    methods: {
+      callback () {
+        console.log('ddd')
       }
     }
   }
